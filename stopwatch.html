@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            font-size: 40px;
+            background-color: pink;
+            border-radius: 10px;
+        }
+        body{
+            background-color: antiquewhite;
+            text-align: center;
+            font-size: 35px;
+            font-family: cursive;
+        }
+        div{
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <strong><u><b><h1>Stop Watch App</h1></b></u></strong>
+    <br>
+    <div class="watch">
+       
+        <p>
+            <span id="s">00</span>
+            <span id=":">:</span>
+            <span id="ms">00</span>
+        </p>
+        
+       
+    </div>
+    <br>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <button id="restart">RESTART</button>
+    <script>
+      window.onload = function () {
+
+        let seconds = 0;
+        let milliseconds = 0;
+        let timer;
+
+        const sec = document.getElementById("s");
+        const ms = document.getElementById("ms");
+
+        document.getElementById("start").onclick = function () {
+            clearInterval(timer);
+            timer = setInterval(startTimer, 10);
+        };
+
+        document.getElementById("stop").onclick = function () {
+            clearInterval(timer);
+        };
+
+        document.getElementById("restart").onclick = function () {
+            clearInterval(timer);
+            seconds = 0;
+            milliseconds = 0;
+
+            sec.textContent = "00";
+            ms.textContent = "00";
+        };
+
+        function startTimer(){
+            milliseconds++;
+
+            if (milliseconds == 100){
+                milleseconds = 0;
+                seconds++;
+            }
+
+            if (milliseconds < 10 ){
+                ms.textContent = "0" + milliseconds;
+            }else{
+               ms.textContent = milliseconds;
+            }
+
+            if (seconds < 10 ){
+            sec.textContent = "0" +seconds;
+            }else{
+               sec.textContent = seconds;
+            }
+        }
+      }
+    </script>
+</body>
+</html>
